@@ -2,11 +2,7 @@
 
 project(LuaTest)
 
-# with help of Matias Devred
-set(lua_SOURCE_DIR external/lua-5.4.6)
-file(GLOB LUA_SRC_FILES ${lua_SOURCE_DIR}/src/*.c) # find source files
-add_library(lualib STATIC ${LUA_SRC_FILES}) # create library
-target_include_directories(lualib PUBLIC ${lua_SOURCE_DIR}/src) # add include dir
+add_subdirectory(external/lua-5.4.6)
 
 # Add source to this project's executable.
 add_executable(NPCReader "main.cpp")
