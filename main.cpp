@@ -2,7 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "lstate.h"
 #include "LuaWrapper.h"
 #include "NPCManager.h"
 #include "lua.hpp"
@@ -15,15 +14,19 @@ int Lua_Test(lua_State*)
 
 int Lua_AddNPC(lua_State* luaStatePtr)
 {
-	std::cout << lua_tolstring(luaStatePtr, int(1), NULL) << "\n";
-	//NPCManager::GetInstance().AddNPC(std::move(name));
+	if (!lua_isstring(luaStatePtr, 1))
+		return 0;
+
+	NPCManager::GetInstance().AddNPC(lua_tostring(luaStatePtr, 1));
 	return 0;
 }
 
-int Lua_RemoveNPC(lua_State*)
+int Lua_RemoveNPC(lua_State* luaStatePtr)
 {
-	//std::string name{ lua_tostring(luaStatePtr, 1) };
-	//NPCManager::GetInstance().RemoveNPC("hey");
+	if (!lua_isstring(luaStatePtr, 1))
+		return 0;
+
+	NPCManager::GetInstance().RemoveNPC(lua_tostring(luaStatePtr, 1));
 	return 0;
 }
 
