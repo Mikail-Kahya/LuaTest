@@ -405,3 +405,5 @@ build_web
 imgui.ini
 
 .idea
+
+**out/
