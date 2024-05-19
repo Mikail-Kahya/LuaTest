@@ -29,7 +29,9 @@ void LuaWrapper::Register(const std::string& name, int func(lua_State*)) const
 	lua_register(m_LuaState, name.c_str(), func);
 }
 
-void LuaWrapper::PerformFile(const std::string&)
+void LuaWrapper::PerformFile(const std::string& filePath) const
 {
+	if (luaL_dofile(m_LuaState, filePath.c_str()) != LUA_OK)
+		throw std::runtime_error("No file could be performed");
 
 }
