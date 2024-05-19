@@ -22,3 +22,7 @@ target_compile_options(${TARGET_NAME} PRIVATE
 
 target_link_libraries(${TARGET_NAME} lualib)
 
+
+ add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
+   COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/luaScripts" "${CMAKE_BINARY_DIR}/luaScripts"
+ )
