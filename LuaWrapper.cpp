@@ -1,6 +1,7 @@
 #include "LuaWrapper.h"
 
 #include <cassert>
+#include <iostream>
 #include <stdexcept>
 #include "lua.hpp"
 
@@ -21,4 +22,14 @@ void LuaWrapper::PerformString(const std::string& expression) const
 {
 	if (luaL_dostring(m_LuaState, expression.c_str()) != LUA_OK)
 		throw std::runtime_error("No string could be performed");
+}
+
+void LuaWrapper::Register(const std::string& name, int func(lua_State*)) const
+{
+	lua_register(m_LuaState, name.c_str(), func);
+}
+
+void LuaWrapper::PerformFile(const std::string&)
+{
+
 }

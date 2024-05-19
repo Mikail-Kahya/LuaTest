@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <functional>
 
 struct lua_State;
 
@@ -10,7 +11,8 @@ public:
 	~LuaWrapper();
 
 	void PerformString(const std::string& expression) const;
-
+	void Register(const std::string& name, int func(lua_State*)) const;
+	void PerformFile(const std::string& filePath);
 private:
 	lua_State* m_LuaState{};
 };
