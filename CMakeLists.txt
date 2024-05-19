@@ -8,8 +8,8 @@ add_subdirectory(external/lua-5.4.6)
 # Add source to this project's executable.
 add_executable(${TARGET_NAME} 
 "main.cpp" 
-"NPCReader.h" 
-"NPCReader.cpp" 
+"NPCManager.h" 
+ 
 "LuaWrapper.h" 
 "LuaWrapper.cpp"
 )
